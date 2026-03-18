@@ -1,0 +1,47 @@
+{
+  "name": "web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "dev:bare": "nuxt dev",
+    "tauri": "tauri",
+    "desktop:dev": "tauri dev",
+    "desktop:build": "tauri build"
+  },
+  "dependencies": {
+    "@ai-sdk/devtools": "^0.0.2",
+    "@ai-sdk/google": "^3.0.1",
+    "@ai-sdk/vue": "^3.0.3",
+    "@my-ai-stack/api": "workspace:*",
+    "@my-ai-stack/auth": "workspace:*",
+    "@my-ai-stack/env": "workspace:*",
+    "@nuxt/ui": "^4.5.1",
+    "@orpc/client": "catalog:",
+    "@orpc/openapi": "catalog:",
+    "@orpc/server": "catalog:",
+    "@orpc/tanstack-query": "catalog:",
+    "@orpc/zod": "catalog:",
+    "@polar-sh/better-auth": "catalog:",
+    "@tanstack/vue-query": "^5.92.9",
+    "ai": "catalog:",
+    "better-auth": "catalog:",
+    "dotenv": "catalog:",
+    "nuxt": "^4.4.2",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.96",
+    "@my-ai-stack/config": "workspace:*",
+    "@tanstack/vue-query-devtools": "^6.1.5",
+    "@tauri-apps/cli": "^2.4.0",
+    "alchemy": "catalog:",
+    "nitro-cloudflare-dev": "^0.2.2",
+    "tailwindcss": "^4.2.1",
+    "typescript": "catalog:",
+    "wrangler": "^4.54.0"
+  }
+}

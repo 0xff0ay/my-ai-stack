@@ -1,0 +1,30 @@
+{
+  "name": "@my-ai-stack/api",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@my-ai-stack/ai": "workspace:*",
+    "@my-ai-stack/auth": "workspace:*",
+    "@my-ai-stack/db": "workspace:*",
+    "@my-ai-stack/env": "workspace:*",
+    "@orpc/client": "catalog:",
+    "@orpc/openapi": "catalog:",
+    "@orpc/server": "catalog:",
+    "@orpc/zod": "catalog:",
+    "ai": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@my-ai-stack/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

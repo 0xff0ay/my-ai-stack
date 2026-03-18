@@ -1,0 +1,29 @@
+{
+  "name": "@my-ai-stack/ai",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./providers": "./src/providers/index.ts",
+    "./agent": "./src/agent/index.ts",
+    "./embeddings": "./src/embeddings/index.ts",
+    "./rag": "./src/rag/index.ts",
+    "./tools": "./src/tools/index.ts",
+    "./memory": "./src/memory/index.ts"
+  },
+  "dependencies": {
+    "ai": "catalog:",
+    "@ai-sdk/anthropic": "catalog:",
+    "@ai-sdk/google": "catalog:",
+    "@ai-sdk/openai": "catalog:",
+    "@anthropic-ai/sdk": "catalog:",
+    "nanoid": "^5.0.7",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@my-ai-stack/config": "workspace:*",
+    "@types/node": "^22.13.14",
+    "typescript": "catalog:"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "enabledMcpjsonServers": [
+    "better-t-stack",
+    "context7",
+    "cloudflare-docs",
+    "nuxt",
+    "nuxt-ui",
+    "better-auth",
+    "expo-mcp",
+    "polar"
+  ]
+}

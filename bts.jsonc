@@ -1,0 +1,46 @@
+// Better-T-Stack
+//
+// Website: https://www.better-t-stack.dev/
+// Stack Builder: https://www.better-t-stack.dev/new
+// Analytics: https://www.better-t-stack.dev/analytics
+// Showcase: https://www.better-t-stack.dev/showcase
+// Sponsor: https://github.com/sponsors/AmanVarshney01
+//
+// Add new addons with: bun create better-t-stack add
+// This file is safe to delete
+
+{
+  "$schema": "https://r2.better-t-stack.dev/schema.json",
+  "version": "3.25.5",
+  "createdAt": "2026-03-17T14:58:28.266Z",
+  "reproducibleCommand": "bun create better-t-stack@latest my-ai-stack --frontend nuxt native-uniwind --backend self --runtime none --database postgres --orm drizzle --api orpc --auth better-auth --payments polar --addons biome electrobun fumadocs husky lefthook mcp opentui oxlint skills starlight tauri turborepo ultracite wxt --examples ai --db-setup docker --web-deploy cloudflare --server-deploy none --git --package-manager bun --install",
+  "database": "postgres",
+  "orm": "drizzle",
+  "backend": "self",
+  "runtime": "none",
+  "frontend": ["nuxt", "native-uniwind"],
+  "addons": [
+    "biome",
+    "electrobun",
+    "fumadocs",
+    "husky",
+    "lefthook",
+    "mcp",
+    "opentui",
+    "oxlint",
+    "skills",
+    "starlight",
+    "tauri",
+    "turborepo",
+    "ultracite",
+    "wxt",
+  ],
+  "examples": ["ai"],
+  "auth": "better-auth",
+  "payments": "polar",
+  "packageManager": "bun",
+  "dbSetup": "docker",
+  "api": "orpc",
+  "webDeploy": "cloudflare",
+  "serverDeploy": "none",
+}

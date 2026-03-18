@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "scheme": "my-ai-stack",
+    "userInterfaceStyle": "automatic",
+    "orientation": "default",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "my-ai-stack",
+    "slug": "my-ai-stack",
+    "plugins": ["expo-font"],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
