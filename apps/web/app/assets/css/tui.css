@@ -1,0 +1,679 @@
+/* ============================================================================
+   TUI Design System - Cyberpunk/Terminal Aesthetic
+   ============================================================================ */
+
+/* CSS Custom Properties */
+:root {
+  /* Primary Colors - Cyberpunk Palette */
+  --tui-primary: #00ffff;
+  --tui-primary-dim: #00aaaa;
+  --tui-secondary: #ff00ff;
+  --tui-secondary-dim: #aa00aa;
+  --tui-accent: #00ff00;
+  --tui-accent-dim: #00aa00;
+
+  /* Background Colors */
+  --tui-bg-primary: #0a0a0f;
+  --tui-bg-secondary: #12121a;
+  --tui-bg-tertiary: #1a1a25;
+  --tui-bg-elevated: #22222f;
+
+  /* Text Colors */
+  --tui-text-primary: #e0e0e0;
+  --tui-text-secondary: #a0a0a0;
+  --tui-text-muted: #606060;
+  --tui-text-accent: var(--tui-primary);
+
+  /* Border Colors */
+  --tui-border: #333340;
+  --tui-border-accent: var(--tui-primary);
+  --tui-border-dim: #222230;
+
+  /* Status Colors */
+  --tui-success: #00ff00;
+  --tui-warning: #ffaa00;
+  --tui-error: #ff3333;
+  --tui-info: #00aaff;
+
+  /* Effects */
+  --tui-glow: 0 0 10px var(--tui-primary);
+  --tui-glow-text: 0 0 5px currentColor;
+  --tui-transition: all 0.2s ease;
+
+  /* Spacing */
+  --tui-spacing-xs: 0.25rem;
+  --tui-spacing-sm: 0.5rem;
+  --tui-spacing-md: 1rem;
+  --tui-spacing-lg: 1.5rem;
+  --tui-spacing-xl: 2rem;
+
+  /* Typography */
+  --tui-font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  --tui-font-size-xs: 0.75rem;
+  --tui-font-size-sm: 0.875rem;
+  --tui-font-size-base: 1rem;
+  --tui-font-size-lg: 1.125rem;
+  --tui-font-size-xl: 1.5rem;
+  --tui-font-size-2xl: 2rem;
+  --tui-font-size-3xl: 3rem;
+}
+
+/* Dark mode base */
+[data-theme="dark"] {
+  --tui-text-primary: #e0e0e0;
+  --tui-text-secondary: #a0a0a0;
+}
+
+/* Light mode overrides */
+[data-theme="light"] {
+  --tui-bg-primary: #f0f0f5;
+  --tui-bg-secondary: #e5e5ea;
+  --tui-bg-tertiary: #dadadf;
+  --tui-bg-elevated: #ffffff;
+  --tui-text-primary: #1a1a25;
+  --tui-text-secondary: #505060;
+  --tui-border: #c0c0c8;
+  --tui-primary: #008888;
+  --tui-secondary: #aa00aa;
+  --tui-accent: #008800;
+}
+
+/* ============================================================================
+   Base Elements
+   ============================================================================ */
+
+.tui-container {
+  background: var(--tui-bg-primary);
+  color: var(--tui-text-primary);
+  font-family: var(--tui-font-mono);
+  min-height: 100vh;
+}
+
+/* ============================================================================
+   TUI Box - Terminal-style container
+   ============================================================================ */
+
+.tui-box {
+  background: var(--tui-bg-secondary);
+  border: 1px solid var(--tui-border);
+  border-radius: 4px;
+  position: relative;
+}
+
+.tui-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--tui-primary), var(--tui-secondary), var(--tui-primary));
+  opacity: 0.7;
+}
+
+.tui-box-header {
+  padding: var(--tui-spacing-sm) var(--tui-spacing-md);
+  border-bottom: 1px solid var(--tui-border-dim);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tui-box-title {
+  font-size: var(--tui-font-size-sm);
+  color: var(--tui-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.tui-box-content {
+  padding: var(--tui-spacing-md);
+}
+
+/* ============================================================================
+   TUI Button
+   ============================================================================ */
+
+.tui-button {
+  font-family: var(--tui-font-mono);
+  font-size: var(--tui-font-size-sm);
+  padding: var(--tui-spacing-sm) var(--tui-spacing-md);
+  background: var(--tui-bg-tertiary);
+  color: var(--tui-text-primary);
+  border: 1px solid var(--tui-border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: var(--tui-transition);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tui-button:hover {
+  background: var(--tui-bg-elevated);
+  border-color: var(--tui-primary);
+  box-shadow: var(--tui-glow);
+}
+
+.tui-button:active {
+  transform: translateY(1px);
+}
+
+.tui-button-primary {
+  background: var(--tui-primary);
+  color: var(--tui-bg-primary);
+  border-color: var(--tui-primary);
+}
+
+.tui-button-primary:hover {
+  background: var(--tui-primary-dim);
+}
+
+.tui-button-danger {
+  border-color: var(--tui-error);
+  color: var(--tui-error);
+}
+
+.tui-button-danger:hover {
+  background: rgba(255, 51, 51, 0.1);
+  box-shadow: 0 0 10px var(--tui-error);
+}
+
+/* ============================================================================
+   TUI Input
+   ============================================================================ */
+
+.tui-input {
+  font-family: var(--tui-font-mono);
+  font-size: var(--tui-font-size-base);
+  padding: var(--tui-spacing-sm) var(--tui-spacing-md);
+  background: var(--tui-bg-primary);
+  color: var(--tui-text-primary);
+  border: 1px solid var(--tui-border);
+  border-radius: 2px;
+  outline: none;
+  width: 100%;
+  transition: var(--tui-transition);
+}
+
+.tui-input:focus {
+  border-color: var(--tui-primary);
+  box-shadow: 0 0 5px var(--tui-primary-dim);
+}
+
+.tui-input::placeholder {
+  color: var(--tui-text-muted);
+}
+
+/* ============================================================================
+   TUI Textarea
+   ============================================================================ */
+
+.tui-textarea {
+  font-family: var(--tui-font-mono);
+  font-size: var(--tui-font-size-base);
+  padding: var(--tui-spacing-md);
+  background: var(--tui-bg-primary);
+  color: var(--tui-text-primary);
+  border: 1px solid var(--tui-border);
+  border-radius: 2px;
+  outline: none;
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  transition: var(--tui-transition);
+}
+
+.tui-textarea:focus {
+  border-color: var(--tui-primary);
+  box-shadow: 0 0 5px var(--tui-primary-dim);
+}
+
+/* ============================================================================
+   TUI Card
+   ============================================================================ */
+
+.tui-card {
+  background: var(--tui-bg-secondary);
+  border: 1px solid var(--tui-border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: var(--tui-transition);
+}
+
+.tui-card:hover {
+  border-color: var(--tui-primary-dim);
+  transform: translateY(-2px);
+}
+
+.tui-card-header {
+  padding: var(--tui-spacing-md);
+  border-bottom: 1px solid var(--tui-border-dim);
+  background: var(--tui-bg-tertiary);
+}
+
+.tui-card-title {
+  font-size: var(--tui-font-size-lg);
+  color: var(--tui-text-primary);
+  margin: 0;
+}
+
+.tui-card-description {
+  font-size: var(--tui-font-size-sm);
+  color: var(--tui-text-secondary);
+  margin-top: var(--tui-spacing-xs);
+}
+
+.tui-card-content {
+  padding: var(--tui-spacing-md);
+}
+
+.tui-card-footer {
+  padding: var(--tui-spacing-md);
+  border-top: 1px solid var(--tui-border-dim);
+  background: var(--tui-bg-tertiary);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--tui-spacing-sm);
+}
+
+/* ============================================================================
+   TUI Badge / Tag
+   ============================================================================ */
+
+.tui-badge {
+  font-family: var(--tui-font-mono);
+  font-size: var(--tui-font-size-xs);
+  padding: 2px 8px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tui-badge-primary {
+  background: rgba(0, 255, 255, 0.1);
+  color: var(--tui-primary);
+  border: 1px solid var(--tui-primary);
+}
+
+.tui-badge-success {
+  background: rgba(0, 255, 0, 0.1);
+  color: var(--tui-success);
+  border: 1px solid var(--tui-success);
+}
+
+.tui-badge-warning {
+  background: rgba(255, 170, 0, 0.1);
+  color: var(--tui-warning);
+  border: 1px solid var(--tui-warning);
+}
+
+.tui-badge-error {
+  background: rgba(255, 51, 51, 0.1);
+  color: var(--tui-error);
+  border: 1px solid var(--tui-error);
+}
+
+/* ============================================================================
+   TUI Progress Bar
+   ============================================================================ */
+
+.tui-progress {
+  height: 20px;
+  background: var(--tui-bg-primary);
+  border: 1px solid var(--tui-border);
+  border-radius: 2px;
+  overflow: hidden;
+  font-family: var(--tui-font-mono);
+  font-size: var(--tui-font-size-xs);
+}
+
+.tui-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--tui-primary-dim), var(--tui-primary));
+  color: var(--tui-bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.3s ease;
+}
+
+/* ============================================================================
+   TUI Divider
+   ============================================================================ */
+
+.tui-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--tui-border),
+    var(--tui-primary),
+    var(--tui-border),
+    transparent
+  );
+  margin: var(--tui-spacing-md) 0;
+}
+
+/* ============================================================================
+   TUI Spinner
+   ============================================================================ */
+
+@keyframes tui-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.tui-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--tui-border);
+  border-top-color: var(--tui-primary);
+  border-radius: 50%;
+  animation: tui-spin 0.8s linear infinite;
+}
+
+.tui-spinner-large {
+  width: 48px;
+  height: 48px;
+  border-width: 3px;
+}
+
+/* ============================================================================
+   TUI Glitch Effect
+   ============================================================================ */
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.tui-glitch {
+  animation: glitch 0.3s ease-in-out;
+}
+
+/* ============================================================================
+   TUI ASCII Art
+   ============================================================================ */
+
+.tui-ascii {
+  font-family: var(--tui-font-mono);
+  white-space: pre;
+  line-height: 1.2;
+  color: var(--tui-primary);
+  text-shadow: var(--tui-glow-text);
+}
+
+/* ============================================================================
+   Matrix Rain Animation
+   ============================================================================ */
+
+@keyframes matrix-rain {
+  0% { transform: translateY(-100%); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.tui-matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.tui-matrix-column {
+  position: absolute;
+  top: 0;
+  font-family: var(--tui-font-mono);
+  font-size: 14px;
+  color: var(--tui-primary);
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  animation: matrix-rain 10s linear infinite;
+  opacity: 0.3;
+}
+
+/* ============================================================================
+   TUI Toast Notifications
+   ============================================================================ */
+
+.tui-toast-container {
+  position: fixed;
+  top: var(--tui-spacing-md);
+  right: var(--tui-spacing-md);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tui-spacing-sm);
+}
+
+.tui-toast {
+  background: var(--tui-bg-elevated);
+  border: 1px solid var(--tui-border);
+  border-radius: 4px;
+  padding: var(--tui-spacing-md);
+  min-width: 300px;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.tui-toast-success { border-left: 3px solid var(--tui-success); }
+.tui-toast-error { border-left: 3px solid var(--tui-error); }
+.tui-toast-warning { border-left: 3px solid var(--tui-warning); }
+.tui-toast-info { border-left: 3px solid var(--tui-info); }
+
+/* ============================================================================
+   TUI Select / Dropdown
+   ============================================================================ */
+
+.tui-select {
+  font-family: var(--tui-font-mono);
+  font-size: var(--tui-font-size-base);
+  padding: var(--tui-spacing-sm) var(--tui-spacing-md);
+  background: var(--tui-bg-primary);
+  color: var(--tui-text-primary);
+  border: 1px solid var(--tui-border);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300ffff' d='M6 8L2 4h8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+.tui-select:focus {
+  border-color: var(--tui-primary);
+}
+
+/* ============================================================================
+   TUI Table
+   ============================================================================ */
+
+.tui-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--tui-font-mono);
+  font-size: var(--tui-font-size-sm);
+}
+
+.tui-table th,
+.tui-table td {
+  padding: var(--tui-spacing-sm) var(--tui-spacing-md);
+  text-align: left;
+  border-bottom: 1px solid var(--tui-border-dim);
+}
+
+.tui-table th {
+  color: var(--tui-text-secondary);
+  text-transform: uppercase;
+  font-size: var(--tui-font-size-xs);
+  letter-spacing: 0.1em;
+  background: var(--tui-bg-tertiary);
+}
+
+.tui-table tr:hover td {
+  background: var(--tui-bg-tertiary);
+}
+
+/* ============================================================================
+   TUI Scrollbar
+   ============================================================================ */
+
+.tui-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.tui-scrollbar::-webkit-scrollbar-track {
+  background: var(--tui-bg-primary);
+}
+
+.tui-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--tui-border);
+  border-radius: 4px;
+}
+
+.tui-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--tui-primary-dim);
+}
+
+/* ============================================================================
+   TUI Cursor Blink
+   ============================================================================ */
+
+@keyframes cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.tui-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background: var(--tui-primary);
+  animation: cursor-blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+/* ============================================================================
+   TUI Terminal Output
+   ============================================================================ */
+
+.tui-terminal {
+  background: var(--tui-bg-primary);
+  border: 1px solid var(--tui-border);
+  border-radius: 4px;
+  padding: var(--tui-spacing-md);
+  font-family: var(--tui-font-mono);
+  font-size: var(--tui-font-size-sm);
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+.tui-terminal-line {
+  display: flex;
+  gap: var(--tui-spacing-sm);
+}
+
+.tui-terminal-prompt {
+  color: var(--tui-primary);
+}
+
+.tui-terminal-command {
+  color: var(--tui-text-primary);
+}
+
+.tui-terminal-output {
+  color: var(--tui-text-secondary);
+}
+
+.tui-terminal-error {
+  color: var(--tui-error);
+}
+
+/* ============================================================================
+   TUI Typing Effect
+   ============================================================================ */
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.tui-typing {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(40, end);
+}
+
+/* ============================================================================
+   Utility Classes
+   ============================================================================ */
+
+.tui-text-primary { color: var(--tui-text-primary); }
+.tui-text-secondary { color: var(--tui-text-secondary); }
+.tui-text-muted { color: var(--tui-text-muted); }
+.tui-text-accent { color: var(--tui-primary); }
+
+.tui-bg-primary { background: var(--tui-bg-primary); }
+.tui-bg-secondary { background: var(--tui-bg-secondary); }
+.tui-bg-tertiary { background: var(--tui-bg-tertiary); }
+
+.tui-glow { text-shadow: var(--tui-glow-text); }
+.tui-glow-box { box-shadow: var(--tui-glow); }
+
+.tui-uppercase { text-transform: uppercase; letter-spacing: 0.1em; }
+.tui-tracking-wide { letter-spacing: 0.05em; }
+
+.tui-flex { display: flex; }
+.tui-flex-col { flex-direction: column; }
+.tui-items-center { align-items: center; }
+.tui-justify-between { justify-content: space-between; }
+.tui-gap-sm { gap: var(--tui-spacing-sm); }
+.tui-gap-md { gap: var(--tui-spacing-md); }
+
+.tui-p-sm { padding: var(--tui-spacing-sm); }
+.tui-p-md { padding: var(--tui-spacing-md); }
+.tui-p-lg { padding: var(--tui-spacing-lg); }
+
+.tui-mt-sm { margin-top: var(--tui-spacing-sm); }
+.tui-mt-md { margin-top: var(--tui-spacing-md); }
+.tui-mb-sm { margin-bottom: var(--tui-spacing-sm); }
+.tui-mb-md { margin-bottom: var(--tui-spacing-md); }
+
+.tui-w-full { width: 100%; }
+.tui-h-full { height: 100%; }
+
+.tui-rounded { border-radius: 4px; }
+.tui-rounded-sm { border-radius: 2px; }
+
+.tui-border { border: 1px solid var(--tui-border); }
+.tui-border-accent { border-color: var(--tui-primary); }
+
+.tui-overflow-hidden { overflow: hidden; }
+.tui-overflow-auto { overflow: auto; }
+
+.tui-relative { position: relative; }
+.tui-absolute { position: absolute; }
+
+.tui-z-10 { z-index: 10; }
+.tui-z-50 { z-index: 50; }
+.tui-z-100 { z-index: 100; }

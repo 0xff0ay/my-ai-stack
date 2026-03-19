@@ -15,16 +15,16 @@
     "@my-ai-stack/auth": "workspace:*",
     "@my-ai-stack/db": "workspace:*",
     "@my-ai-stack/env": "workspace:*",
-    "@orpc/client": "catalog:",
-    "@orpc/openapi": "catalog:",
-    "@orpc/server": "catalog:",
-    "@orpc/zod": "catalog:",
-    "ai": "catalog:",
-    "dotenv": "catalog:",
-    "zod": "catalog:"
+    "@orpc/client": "^1.12.2",
+    "@orpc/openapi": "^1.12.2",
+    "@orpc/server": "^1.12.2",
+    "@orpc/zod": "^1.12.2",
+    "ai": "^6.0.3",
+    "dotenv": "^17.2.2",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@my-ai-stack/config": "workspace:*",
-    "typescript": "catalog:"
+    "typescript": "^5"
   }
 }

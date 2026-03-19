@@ -1,0 +1,10 @@
+[install]
+catalog = true
+
+[install.catalogs]
+ai-sdk = [
+    "@ai-sdk/anthropic@^1.0.0",
+    "@ai-sdk/google@^1.0.0", 
+    "@ai-sdk/openai@^1.0.0",
+    "@anthropic-ai/sdk@^0.32.0",
+]

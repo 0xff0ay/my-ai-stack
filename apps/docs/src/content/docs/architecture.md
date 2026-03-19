@@ -1,0 +1,101 @@
+# Architecture Overview
+
+## System Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        Frontend Layer                           │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐   │
+│  │   Nuxt 4    │  │  TUI comps  │  │  WebSocket Client   │   │
+│  │   (Vue 3)   │  │   (35 comps)│  │  (Real-time collab) │   │
+│  └──────┬──────┘  └──────┬──────┘  └──────────┬──────────┘   │
+└─────────┼────────────────┼────────────────────┼───────────────┘
+          │                │                    │
+          ▼                ▼                    ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                          API Layer                              │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │                     oRPC Router                          │   │
+│  │  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐         │   │
+│  │  │ Agents  │ │  Chat   │ │Memories │ │  Tools  │         │   │
+│  │  └─────────┘ └─────────┘ └─────────┘ └─────────┘         │   │
+│  │  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐         │   │
+│  │  │Workflows│ │Documents│ │Knowledge│ │  Usage  │         │   │
+│  │  └─────────┘ └─────────┘ └─────────┘ └─────────┘         │   │
+│  └──────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+          │
+          ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                       AI Engine Layer                           │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐     │
+│  │    Agent    │  │   Memory    │  │   RAG Engine        │     │
+│  │   Runtime   │  │   System    │  │  (Vector Search)    │     │
+│  └─────────────┘  └─────────────┘  └─────────────────────┘     │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐     │
+│  │   Tools &   │  │  Providers  │  │  Collaboration      │     │
+│  │   Registry  │  │  (Multi)    │  │   Network           │     │
+│  └─────────────┘  └─────────────┘  └─────────────────────┘     │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐     │
+│  │  Semantic   │  │  Self-      │  │   Budget            │     │
+│  │   Cache     │  │  Healing    │  │   Optimizer         │     │
+│  └─────────────┘  └─────────────┘  └─────────────────────┘     │
+└─────────────────────────────────────────────────────────────────┘
+          │
+          ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                     Data Layer                                  │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐     │
+│  │ PostgreSQL  │  │  pgvector   │  │      Redis          │     │
+│  │  (Drizzle)  │  │  (Embeds)   │  │    (Cache/Queue)    │     │
+│  └─────────────┘  └─────────────┘  └─────────────────────┘     │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+## Component Details
+
+### Frontend Layer
+- **Nuxt 4 Application**: Vue 3 with TypeScript
+- **TUI Components**: 35 terminal-style components with cyberpunk aesthetic
+- **WebSocket Client**: Real-time collaboration and streaming
+
+### API Layer
+- **oRPC Router**: Type-safe RPC with Zod validation
+- **Authentication**: Better Auth integration
+- **Rate Limiting**: Per-user and per-IP limits
+
+### AI Engine Layer
+- **Agent Runtime**: Multi-model support with fallback chains
+- **Memory System**: Short-term, long-term, and vector-indexed memories
+- **RAG Engine**: Hybrid search with chunking and re-ranking
+- **Tools Registry**: Dynamic registration and marketplace
+- **Collaboration Network**: Multi-agent orchestration with roles
+- **Semantic Cache**: Vector similarity caching
+- **Self-Healing**: Circuit breakers and auto-recovery
+- **Budget Optimizer**: Token tracking and cost management
+
+### Data Layer
+- **PostgreSQL**: Primary database with Drizzle ORM
+- **pgvector**: Vector embeddings for semantic search
+- **Redis**: Caching and job queues
+
+## Data Flow
+
+1. **User Request**: Frontend → API Router
+2. **Authentication**: Verify JWT/session
+3. **Agent Selection**: Load agent config from DB
+4. **Context Building**: Retrieve memories + documents
+5. **Tool Selection**: Determine required tools
+6. **LLM Call**: Stream response from provider
+7. **Response Processing**: Apply privacy filters
+8. **Caching**: Store in semantic cache
+9. **Budget Tracking**: Record token usage
+10. **Response**: Stream back to frontend
+
+## Scalability Considerations
+
+- **Horizontal Scaling**: Stateless API layer
+- **Database**: Read replicas for queries
+- **Caching**: Multi-tier cache (L1: Memory, L2: Redis, L3: Disk)
+- **Edge Deployment**: Cloudflare Workers for low latency
+- **Queue System**: BullMQ for background jobs

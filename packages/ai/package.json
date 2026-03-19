@@ -13,17 +13,17 @@
     "./memory": "./src/memory/index.ts"
   },
   "dependencies": {
-    "ai": "catalog:",
-    "@ai-sdk/anthropic": "catalog:",
-    "@ai-sdk/google": "catalog:",
-    "@ai-sdk/openai": "catalog:",
-    "@anthropic-ai/sdk": "catalog:",
+    "ai": "^6.0.3",
+    "@ai-sdk/anthropic": "^1.0.0",
+    "@ai-sdk/google": "^1.0.0",
+    "@ai-sdk/openai": "^1.0.0",
+    "@anthropic-ai/sdk": "^0.32.0",
     "nanoid": "^5.0.7",
-    "zod": "catalog:"
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@my-ai-stack/config": "workspace:*",
     "@types/node": "^22.13.14",
-    "typescript": "catalog:"
+    "typescript": "^5"
   }
 }

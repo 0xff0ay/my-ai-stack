@@ -1,3 +1,53 @@
+# My AI Stack Documentation
+
+Documentation site for the AI Agent Platform, built with [Astro Starlight](https://starlight.astro.build/).
+
+## Documentation Structure
+
+```
+src/content/docs/
+├── index.mdx          # Getting started guide
+├── architecture.md    # System architecture
+├── api.md            # API reference
+├── schema.md         # Database schema
+├── tui.md            # TUI components
+├── contributing.md   # Contribution guidelines
+└── guides/
+    └── deployment.md
+└── reference/
+```
+
+## Available Documentation
+
+- **Getting Started** - Installation and quick start guide
+- **Architecture** - System design and component overview
+- **API Reference** - oRPC endpoints and usage examples
+- **Database Schema** - Drizzle ORM table definitions
+- **TUI Components** - Terminal UI component library docs
+- **Contributing** - Development workflow and guidelines
+
+## Local Development
+
+```bash
+# Install dependencies
+bun install
+
+# Start dev server
+bun run dev
+
+# Build for production
+bun run build
+```
+
+The documentation site runs at `http://localhost:4321`.
+
+---
+
+## Original Starlight Template
+
+<details>
+<summary>Click to expand original Starlight README</summary>
+
 # Starlight Starter Kit: Basics
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
@@ -46,4 +96,6 @@ All commands are run from the root of the project, from a terminal:
 
 ## 👀 Want to learn more?
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+Check out [Starlight's docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+
+</details>
