@@ -45,6 +45,7 @@
     "destroy": "turbo -F @my-ai-stack/infra destroy",
     "check": "ultracite check",
     "fix": "ultracite fix",
+    "test": "echo \"No tests configured\"",
     "prepare": "husky"
   },
   "dependencies": {
