@@ -47,8 +47,8 @@ docker-compose up -d
 # 🎯 Build for production
 bun build
 
-# 🔍 Check code quality
-bun check
+  # 🔍 Check code quality
+  bun check
 ```
 
 ---
